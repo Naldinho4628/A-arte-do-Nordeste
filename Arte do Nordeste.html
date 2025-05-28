@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A arte do Nordeste - Cardápio e Pedido</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: gold;
+      margin: 0;
+      padding: 40px;
+      scroll-behavior: smooth;
+    }
+    header {
+      background-color: gold;
+      color: black;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 15px;
+      color: brown;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    nav a:hover {
+      color: brown;
+    }
+    section {
+      margin-top: 40px;
+    }
+    h1, h2 {
+      color: #bf360c;
+    }
+    p {
+      line-height: 1.5;
+      color: #333;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 0 5px #ccc;
+    }
+    /* Cardápio */
+    .menu-section {
+      margin: 30px 0;
+    }
+    .item {
+      background: Brown;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 10px 0;
+      box-shadow: 0 0 5px #ccc;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .item:hover {
+      background-color: gold;
+    }
+    /* Pedido */
+    #pedido {
+      background: black;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px #aaa;
+    }
+    #listaPedido {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    #listaPedido li {
+      display: flex;
+      justify-content: space-between;
+      background: Gold;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      box-shadow: 0 0 3px #bbb;
+    }
+    #listaPedido li span {
+      flex: 1;
+    }
+    #listaPedido li button {
+      background-color: black;
+      border: none;
+      color: red;
+      border-radius: 5px;
+      padding: 3px 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #listaPedido li button:hover {
+      background-color: gold;
+    }
+    button.enviar-btn {
+      background-color: gold;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+    button.enviar-btn:hover {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>A arte do Nordeste</h1>
+  <p>Desde 1975 oferecendo o melhor da culinária nordestina</p>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#cardapio">Cardápio</a>
+    <a href="#pedido">Pedido</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>Somos um restaurante tradicional localizado no coração de Brasília, servindo
+    pratos feitos com ingredientes frescos e muito carinho. Nossa maior missão é trazer
+    sabor, conforto e uma experiência gastronômica inesquecível para nossos clientes que amam aquela buchada.</p>
+    <img src="imagens/restaurante.jpg" alt="Foto do restaurante" />
+  </section>
+
+  <section id="cardapio">
+    <h2>Cardápio</h2>
+
+    <div class="menu-section">
+      <h3>Pratos Principais</h3>
+      <div class="item" onclick="adicionarPedido('Panelada Completa', 55.00)">Panelada Completa - R$ 55,00</div>
+      <div class="item" onclick="adicionarPedido('Língua de Boi flambada no alambique', 67.90)">Língua de Boi flambada no alambique - R$ 67,90</div>
+      <div class="item" onclick="adicionarPedido('Buchada Completa', 98.00)">Buchada Completa - R$ 98,00</div>
+      <div class="item" onclick="adicionarPedido('Rabada Completa', 69.90)">Rabada Completa - R$ 69,90</div>
+      <div class="item" onclick="adicionarPedido('Coração de frango flambada no alambique e cebola caramelizada no caldo de cana', 98.00)">Coração de frango flambada no alambique e cebola caramelizada no caldo de cana - R$ 98,00</div>
+    </div>
+
+    <div class="menu-section">
+      <h3>Bebidas</h3>
+      <div class="item" onclick="adicionarPedido('Suco Natural Jarra ou Copo', 9.00)">Suco Natural Jarra ou Copo (consultar sabores) - R$ 9,00</div>
+      <div class="item" onclick="adicionarPedido('Refrigerante Lata', 6.00)">Refrigerante Lata - R$ 6,00</div>
+      <div class="item" onclick="adicionarPedido('Água Mineral', 3.00)">Água Mineral - R$ 3,00</div>
+      <div class="item" onclick="adicionarPedido('Água Com Gás', 5.00)">Água Com Gás - R$ 5,00</div>
+      <div class="item" onclick="adicionarPedido('Drinks diversos', 13.00)">Drinks diversos - R$ 13,00</div>
+    </div>
+
+    <div class="menu-section">
+      <h3>Sobremesas</h3>
+      <div class="item" onclick="adicionarPedido('Pudim de Leite', 10.00)">Pudim de Leite - R$ 10,00</div>
+      <div class="item" onclick="adicionarPedido('Mousse de Maracujá', 9.00)">Mousse de Maracujá - R$ 9,00</div>
+      <div class="item" onclick="adicionarPedido('Mousse de Limão', 11.00)">Mousse de Limão - R$ 11,00</div>
+      <div class="item" onclick="adicionarPedido('Pavê', 19.00)">Pavê - R$ 19,00</div>
+    </div>
+  </section>
+
+  <section id="pedido">
+    <h2>Seu Pedido</h2>
+    <div id="pedido">
+      <ul id="listaPedido">
+        <li class="vazio">Nenhum item selecionado.</li>
+      </ul>
+      <p><strong>Total: R$ <span id="totalPedido">0,00</span></strong></p>
+      <button class="enviar-btn" onclick="enviarWhatsApp()" disabled id="btnEnviar">Enviar Pedido via WhatsApp</button>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Objeto que guarda os pedidos { nome: {quantidade, preco} }
+  let pedido = {};
+
+  // Carregar pedido do localStorage se existir
+  if (localStorage.getItem('pedido')) {
+    pedido = JSON.parse(localStorage.getItem('pedido'));
+    atualizarLista();
+  }
+
+  function adicionarPedido(nome, preco) {
+    if (pedido[nome]) {
+      pedido[nome].quantidade++;
+    } else {
+      pedido[nome] = { quantidade: 1, preco: preco };
+    }
+    salvarPedido();
+    atualizarLista();
+  }
+
+  function removerItem(nome) {
+    if (pedido[nome]) {
+      pedido[nome].quantidade--;
+      if (pedido[nome].quantidade <= 0) {
+        delete pedido[nome];
+      }
+      salvarPedido();
+      atualizarLista();
+    }
+  }
+
+  function salvarPedido() {
+    localStorage.setItem('pedido', JSON.stringify(pedido));
+  }
+
+  function atualizarLista() {
+    const lista = document.getElementById('listaPedido');
+    lista.innerHTML = '';
+
+    const nomes = Object.keys(pedido);
+    if (nomes.length === 0) {
+      lista.innerHTML = '<li class="vazio">Nenhum item selecionado.</li>';
+      document.getElementById('totalPedido').textContent = '0,00';
+      document.getElementById('btnEnviar').disabled = true;
+      return;
+    }
+
+    let total = 0;
+    nomes.forEach(nome => {
+      const item = pedido[nome];
+      total += item.preco * item.quantidade;
+
+      const li = document.createElement('li');
+
+      const spanNome = document.createElement('span');
+      spanNome.textContent = `${nome} x ${item.quantidade} - R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}`;
+
+      const btnRemover = document.createElement('button');
+      btnRemover.textContent = '−';
+      btnRemover.onclick = () => removerItem(nome);
+
+      li.appendChild(spanNome);
+      li.appendChild(btnRemover);
+
+      lista.appendChild(li);
+    });
+
+    document.getElementById('totalPedido').textContent = total.toFixed(2).replace('.', ',');
+    document.getElementById('btnEnviar').disabled = false;
+  }
+
+  function enviarWhatsApp() {
+    if (Object.keys(pedido).length === 0) return;
+
+    let mensagem = 'Olá! Gostaria de fazer o seguinte pedido:%0A';
+
+    Object.keys(pedido).forEach(nome => {
+      const item = pedido[nome];
+      mensagem += `- ${nome} x${item.quantidade} (R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')})%0A`;
+    });
+
+    const total = Object.values(pedido).reduce((acc, cur) => acc + (cur.preco * cur.quantidade), 0);
+    mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+
+    // Seu número no formato internacional sem espaços, ex: 5511999998888
+    const numeroWhatsApp = '5511999999999';
+
+    // Abrir o WhatsApp Web/APP
+    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
